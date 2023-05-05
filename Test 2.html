@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Psychological Well-Being Companion</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans&display=swap" rel="stylesheet">
+    <style>
+      body {
+        background-color: black;
+        color: white;
+        font-family: 'Google Sans', sans-serif;
+      }
+      h1 {
+        text-align: center;
+        font-size: 5em;
+      }
+      #input-box {
+        display: block;
+        margin: 0 auto;
+        font-size: 2em;
+        width: 80%;
+        max-width: 500px;
+        padding: 10px;
+        text-align: center;
+        color: white;
+        background-color: #111111;
+        border: 2px solid white;
+        height: 200%;
+        border-radius: 25px;
+        font-family: 'Google Sans', sans-serif;
+      }
+      #input-box::placeholder {
+        color: grey;
+        text-align: center;
+      }
+      #search-button {
+        display: block;
+        margin: 20px auto;
+        font-size: 2em;
+        padding: 10px;
+        color: white;
+        background-color: #111111;
+        border: 2px solid white;
+        border-radius: 25px;
+        font-family: 'Google Sans', sans-serif;
+        cursor: pointer;
+      }
+      #search-result {
+        display: none;
+        margin: 20px auto;
+        font-size: 1.5em;
+        width: 80%;
+        max-width: 500px;
+        text-align: justify;
+        font-family: 'Google Sans', sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Psychological Well-Being Companion</h1>
+    <input id="input-box" type="text" maxlength="20" placeholder="How can we help you">
+    <button id="search-button">Search</button>
+    <div id="search-result"></div>
+
+    <script>
+      const searchButton = document.querySelector("#search-button");
+      const searchResult = document.querySelector("#search-result");
+      const inputBox = document.querySelector("#input-box");
+
+      searchButton.addEventListener("click", function() {
+        const searchQuery = inputBox.value;
+        const dummyResult = `Results for "${searchQuery}": are you sad? don't worry. our servers are down right now but we will get to you as soon as possible.`;
+        searchResult.textContent = dummyResult;
+        searchResult.style.display = "block";
+      });
+
+      inputBox.addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) {
+          event.preventDefault();
+          searchButton.click();
+        }
+      });
+    </script>
+  </body>
+</html>
